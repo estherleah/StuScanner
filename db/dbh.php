@@ -1,7 +1,7 @@
 <?php
 
 $connectstr_dbhost = 'g16.database.windows.net';
-$connectstr_dbname = 'azuredb';
+$connectstr_dbname = 'localdb';
 $connectstr_dbusername = 'test';
 $connectstr_dbpassword = 'Harvey1Esther2Will3';
 
