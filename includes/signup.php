@@ -35,7 +35,7 @@ else {
         exit();
 
     }else{
-		$sql = "INSERT INTO [dbo].[users] ([email], [uid], [pwd]) VALUES ('$email', '$uid', '$pwd')";
+        $sql = "INSERT INTO users (email, uid, pwd) VALUES ('$email', '$uid', '$pwd')";
 
         $result = mysqli_query($conn, $sql);
 
