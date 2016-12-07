@@ -26,7 +26,7 @@ if (empty($pwd)){
 }
 else {
 
-    $sql = "SELECT uid FROM dbo.users WHERE uid='$uid'";
+    $sql = "SELECT uid FROM users WHERE uid='$uid'";
     $result = mysqli_query($conn, $sql);
     $uidcheck = mysqli_num_rows($result);
     
@@ -35,7 +35,7 @@ else {
         exit();
 
     }else{
-        $sql = "INSERT INTO dbo.users (email, uid, pwd) VALUES ('$email', '$uid', '$pwd')";
+        $sql = "INSERT INTO users (email, uid, pwd) VALUES ('$email', '$uid', '$pwd')";
 
         $result = mysqli_query($conn, $sql);
 
