@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("db/dbh.php");
 ?>
 <html>
 <div id =sidebar class="visible">
