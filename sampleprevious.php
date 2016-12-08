@@ -109,8 +109,6 @@ var mycanvas".$i." = new Chart(ctx, {
                 </div>
                 <div id="table" class="tab-pane fade in active">
 <?php
-mysql_connect('localhost', 'root', '');
-mysql_select_db('quexf');
 
 $bgid;
 
