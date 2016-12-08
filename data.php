@@ -4,19 +4,20 @@
 
 //setting header to json
 //header('Content-Type: application/json');
+include 'db/dbh.php';
 
 //database
-define('DB_HOST', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'quexf');
+//define('DB_HOST', 'localhost');
+//define('DB_USERNAME', 'root');
+//define('DB_PASSWORD', '');
+//define('DB_NAME', 'quexf');
 
 //get connection
-$mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+//$mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-if(!$mysqli){
-	die("Connection failed: " . $mysqli->error);
-}
+//if(!$mysqli){
+//	die("Connection failed: " . $mysqli->error);
+//}
 
 //query to get data from the table
 
