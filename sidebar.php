@@ -32,7 +32,7 @@
                 <ul id="menu-comunicacao-sub" >
                     <li id="menu-arquivos" ><a href="changepassword.php"><i class="fa fa-refresh"></i>Change password</a></li>
                     <li id="menu-arquivos" ><a href="#"><i class="fa fa-table"></i>Manage</a></li>
-                    <li id="menu-arquivos" ><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    <li id="menu-arquivos" ><a href="includes/logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
                 </ul>
             </li>
 
