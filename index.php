@@ -1,4 +1,13 @@
 <?php
+/*
+ *---------------------------------------------------------------
+ * LANDING PAGE
+ *---------------------------------------------------------------
+ *
+ *
+ * @HZ @WE @ELM
+ */
+
 session_start();
 ?>
 <!DOCTYPE html>
@@ -8,8 +17,10 @@ session_start();
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <link href="css/bootstrap-combined.min.css" rel="stylesheet" media="screen">
+    <link rel="icon" type="image/png" href="img/ucl-icon.gif" />
     <script type="text/javascript" src="js/bootstrap.fix.js"></script>
-<title>Login</title>
+
+    <title>Login</title>
 </head>
 <body>
 <div class="container-fluid">
@@ -29,7 +40,7 @@ session_start();
                         <img alt="here is picture 1" src="img/loginucl1.png" width="1356" height="850" />
                         <div class="carousel-caption">
                             <p>
-                                ATG Class Student OCR Feedback Scanning App
+                                UStuScan: UCL Feedback Scanning App
                             </p>
                         </div>
                     </div>
@@ -37,7 +48,7 @@ session_start();
                         <img alt="here is picture 2" src="img/loginucl2.png" width="1356" height="850" />
                         <div class="carousel-caption">
                             <p>
-                                ATG Class Student OCR Feedback Scanning App
+                                UStuScan: UCL Feedback Scanning App
                             </p>
                         </div>
                     </div>
@@ -45,7 +56,7 @@ session_start();
                         <img alt="here is picture 3" src="img/loginucl3.png" width="1356" height="850" />
                         <div class="carousel-caption">
                             <p>
-                                ATG Class Student OCR Feedback Scanning App
+                                UStuScan: UCL Feedback Scanning App
                             </p>
                         </div>
                     </div>
@@ -53,7 +64,28 @@ session_start();
             </div>
         </div>
         <div class="col-xs-6 span3">
-            <img alt="ATG Class Student OCR Feedback Scanning App" src="img/test1.png" />
+            <!--            <img alt="UCL Student OCR Feedback Web App" src="img/test1.png" />-->
+
+            <section>
+
+
+
+                <div class="hex" style="width: 18vw; height: 18vw;font-size:19px;background-color: #5763ff; color: white;  line-height: 15vw;  text-align: center;"><img src="img/logobig.png" width="387" height="160"></div>
+
+            </section>
+            <script src="js/anime.js"></script>
+            <script>
+                var hex = anime({
+                    targets: '.hex',
+                    backgroundColor: '#319BFF',
+                    duration: 3000,
+                    loop: true,
+                    direction: 'alternate',
+                    easing: 'easeOutQuad'
+                });
+            </script>
+
+
             <br>
             <br>
             <br>
@@ -76,17 +108,87 @@ session_start();
                         $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
                         if (strpos($url,'error=incorrect') !==false){
                             echo "Your username or password is incorrect!";
-                        }?>
+                        }
+                        if (strpos($url,'error=resetpass') !==false){
+                            echo "Your temporary password is: 66666666, please login and change your password as soon as possible!";
+                        }
+                        if (strpos($url,'success') !==false){
+                        echo "Sign up success, please login";}
+
+                        if (strpos($url,'changesuc') !==false){
+                            echo "Password change successful, please login again";}
+                        ?>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <label class="checkbox"><input type="checkbox" />Remember me</label><button class="btn" type="submit">Login</button>
-                        <br><br>
-                        <p>Not registered yet? Sign up now!</p>
                     </div>
                 </div>
             </form>
+
+
+            <a data-toggle="modal" data-target="#myModal2">
+                Forgot password?
+            </a>
+            <!-- （Modal） -->
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <?php
+                            $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                            if (strpos($url,'error=messagesent') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal2').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    <style>
+                                    </style>
+                                    Success, please check your email inbox.
+                                </h4>
+                                <?php ;}
+                            if (strpos($url,'error=checkemail') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal2').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    <style>
+                                    </style>
+                                    Sorry, we couldn't verify your account, please try again
+                                </h4>
+                                <?php ;}
+
+
+                            ?>
+                            <form action="includes/sendemail.php" method="post">
+                                Please enter your email address
+                                <input type="text" name="email" placeholder="Email"><br>
+                                <br>
+                                <button type="submit" class="btn btn-primary" name="forgotPass" value="Request Password">Send message</button> &#160&#160&#160&#160
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+
+
+
+            <br><br>
+            <p>Not registered yet? Sign up now!</p>
             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                 Sign up
             </button>
@@ -100,19 +202,74 @@ session_start();
                             </button>
                             <?php
                             $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                            if (strpos($url,'error=empty') !==false){
+                            if (strpos($url,'error=emailempty') !==false){
                                 ?>
                                 <script>
                                     $(function () { $('#myModal').modal({
                                         keyboard: true
                                     })});
                                 </script>
-                                <h4 class="modal-title" id="myModalLabel">
+                                <h4 class="modal-title" id="myModalLabel" style="color: red">
                                     <style>
                                     </style>
-                                    Fill out all fields!
+                                    Fill out all fields.
                                 </h4>
-                                <?php ;} ?>
+                                <?php ;}
+
+                            if (strpos($url,'error=notsame') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <style>
+                                    </style>
+                                    The passwords you entered didn't match.
+                                </h4>
+                                <?php ;}
+                            if (strpos($url,'error=userempty') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <style>
+                                    </style>
+                                    Fill out all fields.
+                                </h4>
+                                <?php ;}
+                            if (strpos($url,'error=emailexist') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel"  style="color: red">
+                                    <style>
+                                    </style>
+                                    Email already exist!
+                                </h4>
+                                <?php ;}
+
+                            if (strpos($url,'error=username') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <style>
+                                    </style>
+                                    Username already exists.
+                                </h4>
+                                <?php ;}
+                            ?>
                         </div>
                         <div class="modal-body">
                             <form action="includes/signup.php" method="POST">
@@ -120,7 +277,6 @@ session_start();
                                 <input type="text" name="email" placeholder="Email"><br>
                                 <input type="password" name="pwd" placeholder="Password"><br>
                                 <input type="password" name="pwd2" placeholder="Confirm Password"><br>
-                                <a href="includes/adminrequest.php">Request Administrator Access</a><br><br><br>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
                                 <button type="submit" class="btn btn-primary">Sign up</button>
 
@@ -129,6 +285,71 @@ session_start();
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
             </div>
+
+
+            <br>
+            <br>
+
+            <a data-toggle="modal" data-target="#myModal3">
+                Request Administrator Access
+            </a>
+            <!-- （Modal） -->
+            <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <?php
+                            $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                            if (strpos($url,'adminsent') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal3').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    <style>
+                                    </style>
+                                    Success, please wait for administrator accept.
+                                </h4>
+                                <?php ;}
+                            if (strpos($url,'error=checa') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal3').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    <style>
+                                    </style>
+                                    Sorry, we couldn't verify your account, please try again
+                                </h4>
+                                <?php ;}
+
+
+                            ?>
+                            <form action="includes/adminrequest.php" method="post">
+                                Please enter your email address
+                                <input type="text" name="email" placeholder="Email"><br>
+                                <br>
+                                <button type="submit" class="btn btn-primary" name="forgotPass" value="Request Password">Send message</button> &#160&#160&#160&#160
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+
+
+
+
         </div>
     </div>
 </div>
