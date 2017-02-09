@@ -530,7 +530,7 @@ if (!isset($_SESSION['boxes'])) {
 		print "<p>" . T_("NO MORE WORK") . "</p>";
 
 		print "<form name=\"form1\" action=\"" . $_SERVER['PHP_SELF'] . "\" method=\"post\"><input type=\"submit\" name=\"assign\" value=\"" . T_("Check for more work") . "\"/></form>";
-		print "<p><a href=\"" . $_SERVER['PHP_SELF'] . "?assign=assign\">" . T_("") . "</a></p>";
+		print "<p><a href=\"" . $_SERVER['PHP_SELF'] . "?assign=assign\">" . T_("Check") . "</a></p>";
 		unset($_SESSION['boxgroups']);
 		unset($_SESSION['pages']);
 		unset($_SESSION['boxes']);
