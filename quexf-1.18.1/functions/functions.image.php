@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit','1024M');
 
 /*	Copyright Deakin University 2007,2008
  *	Written by Adam Zammit - adam.zammit@deakin.edu.au
