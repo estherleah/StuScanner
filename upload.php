@@ -5,7 +5,8 @@
  *---------------------------------------------------------------
  * UPLOAD
  *---------------------------------------------------------------
- *
+ *  This page prepares the uploaded files and formcollections
+ *  table in the quexf db for the process of verification
  *
  * @WE
  */

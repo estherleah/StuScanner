@@ -1,5 +1,15 @@
 <?php
 
+/*
+*---------------------------------------------------------------
+* VERIFY
+*---------------------------------------------------------------
+* This page contains the logic for the OMR performed by quexf
+* importing functions it has been adapted for our purposes.
+*
+* @WE @ELM
+*/
+
 include_once("config.inc.php");
 include_once("db.inc.php");
 include("functions/functions.image.php");
@@ -530,7 +540,7 @@ if (!isset($_SESSION['boxes'])) {
 		print "<p>" . T_("NO MORE WORK") . "</p>";
 
 		print "<form name=\"form1\" action=\"" . $_SERVER['PHP_SELF'] . "\" method=\"post\"><input type=\"submit\" name=\"assign\" value=\"" . T_("Check for more work") . "\"/></form>";
-		print "<p><a href=\"" . $_SERVER['PHP_SELF'] . "?assign=assign\">" . T_("Check") . "</a></p>";
+		print "<p><a href=\"" . $_SERVER['PHP_SELF'] . "?assign=assign\">" . T_("") . "</a></p>";
 		unset($_SESSION['boxgroups']);
 		unset($_SESSION['pages']);
 		unset($_SESSION['boxes']);

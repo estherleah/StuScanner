@@ -22,6 +22,14 @@
  *
  */
 
+/*
+*---------------------------------------------------------------
+* FUNCTIONS DATABASE
+*---------------------------------------------------------------
+* The marked functions have been added/adapted for out purposes
+*
+* @WE @ELM
+*/
 
 session_start();
 include_once(dirname(__FILE__).'/../config.inc.php');
@@ -29,9 +37,12 @@ include_once(dirname(__FILE__).'/../db.inc.php');
 
 
 /*
- * WILL HAS ADDED
+ * WE ORIGINAL CONTENT >>>>>>>>>>>
  */
 
+/**
+ * @return the current collection in focus
+ */
 function get_cid(){
 
     if( isset($_SESSION['cid'])){
@@ -46,8 +57,7 @@ function get_cid(){
 }
 
 /**
- *  Given the uid returns the vid stored in the logintest database
- *
+ *  @return the vid stored in the logintest database for a given uid
  */
 function uid_to_vid($uid){
 
@@ -67,7 +77,9 @@ function uid_to_vid($uid){
 
 }
 
-// returns cids for current vid
+/**
+ * @return returns cids for current vid
+ */
 function get_collections(){
 
     global $db;
@@ -79,8 +91,6 @@ function get_collections(){
     $sql = "SELECT * FROM formcollections WHERE vid = '$vid' ORDER BY cid DESC";
 
     $rs = $db->getAll($sql);
-    //echo $vid;
-    //echo $rs ? "succ" : "fail";
 
     if(count($rs) < 1 )
     {
@@ -95,7 +105,10 @@ function get_collections(){
     return $result;
 }
 
-// returns previous 4 collections for current vid
+/**
+ * @return the users previous 4 collections
+ *
+ */
 function get_last_collections(){
 
     global $db;
@@ -123,7 +136,10 @@ function get_last_collections(){
     return $result;
 }
 
-//creates a new row in the formcollections database edits cid session variable ready for import
+/**
+ * prepares new collection for import
+ * creates a new row in the formcollections database edits cid session variable
+ */
 function new_collection(){
 
     global $db;
@@ -151,7 +167,14 @@ function new_collection(){
 
 }
 
-//update the values in the collection database
+/**
+ * updates the values in the formcollections table with
+ * params below
+ * @param $cid
+ * @param $vid
+ * @param $description
+ * @param $qid
+ */
 function update_collection($cid, $vid, $description, $qid)
 {
     global $db;
@@ -173,7 +196,10 @@ function update_collection($cid, $vid, $description, $qid)
 
 }
 
-//Gets the number of multiple choice/array box groups for a given questionnaire
+
+/**
+ * Gets the number of multiple choice/array box groups for a given questionnaire
+ */
 function get_bgid_max(){
 
     global $db;
@@ -186,7 +212,13 @@ function get_bgid_max(){
 
 }
 
-//returns an array of bgids corresponding from a given fid
+
+/**
+ * returns an array of bgids corresponding from a given fid
+ * @param $cid
+ * @param int $option
+ * @return array|bool
+ */
 function get_bgids_from_cid( $cid, $option = 1){
 
     global $db;
@@ -210,7 +242,11 @@ function get_bgids_from_cid( $cid, $option = 1){
 
         $qid = $qid_row['qid'];
 	*/
-	//hardcoded
+
+	/* !! IMPORTANT !!
+	 * This is another place in which the questionnaire number is
+	 * hardcoded preventing multiple questionnaires to be used by this application
+	 */
 	$qid = 1;
         $sql = "SELECT pid FROM pages WHERE qid = '$qid'";
 
@@ -252,7 +288,9 @@ function get_bgids_from_cid( $cid, $option = 1){
     return $result;
 }
 
-//returns the description of a question from a given bgid
+/*
+ * returns the description of a question from a given bgid
+ */
 function get_question_description($bgid){
 
     global $db;
@@ -271,7 +309,10 @@ function get_question_description($bgid){
     }
 }
 
-//gets the varname from the given bgid
+
+/*
+ * gets the varname from the given bgid
+ */
 function get_question_varname($bgid){
 
     global $db;
@@ -291,10 +332,11 @@ function get_question_varname($bgid){
 }
 
 /*
- *  End OF WILL ADDED
+ *  End OF WE Original Content >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  */
-/* Sort box groups by pageid then box tly tlx
- *
+
+/*
+ * Sort box groups by pageid then box tly tlx
  */
 function sort_order_pageid_box($qid)
 {
