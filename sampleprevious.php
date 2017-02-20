@@ -6,7 +6,7 @@
  *---------------------------------------------------------------
  *
  *
- * @HZ @WE @ELM
+ * @ELM
  */
 
 include 'quexf-1.18.1/functions/functions.database.php'; //includes session start
