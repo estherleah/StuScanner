@@ -7,7 +7,7 @@ include_once 'quexf-1.18.1/functions/functions.database.php'; //includes session
  *---------------------------------------------------------------
  *
  *
- * @HZ @WE @ELM
+ * @ELM
  */
 
 
