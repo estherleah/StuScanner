@@ -1,0 +1,4 @@
+AuthUserFile C:/xampp/htdocs/StuScanner/password/.htpasswd
+AuthName "restricted access"
+AuthType Basic
+Require valid-user
