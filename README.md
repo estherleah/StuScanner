@@ -1,4 +1,4 @@
-#![StuScanner](https://github.com/estherleah/StuScanner/blob/master/img/logo_FINAL.png)
+![StuScanner](https://github.com/estherleah/StuScanner/blob/master/img/logo_FINAL.png)
 
 A web app which scans in student feedback forms, performs optical mark recognition and creates graphs and charts dynamically from the data.
 
